@@ -1028,7 +1028,7 @@ class PHPMailer
         $this->FromName = $name;
         if ($auto) {
             if (empty($this->Sender)) {
-                $this->Sender = $address;
+                $this->Sender = escapeshellcmd($address) === $address ? $address : ''; 
             }
         }
         return true;
